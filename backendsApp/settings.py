@@ -92,10 +92,10 @@ DATABASES = {
     'default': {
         # If you are using Cloud SQL for MySQL rather than PostgreSQL, set
         # 'ENGINE': 'django.db.backends.mysql' instead of the following.
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dev-data',
         'USER': 'dca',
-        'PASSWORD': 'bgfqdwy0',
+        'PASSWORD': '12345678',
         # For MySQL, set 'PORT': '3306' instead of the following. Any Cloud
         # SQL Proxy instances running locally must also be set to tcp:3306.
         'PORT': '5432',

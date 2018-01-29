@@ -3,6 +3,13 @@ runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT backendsApp.wsgi
 
+
+env_variables :
+   DB_NAME : 'dev-data	'
+   DB_USERNAME : 'dca'
+   DB_PASSWORD : '12345678'
+   DB_HOST : '/cloudsql/app-backend-service:europe-west1:data-instance'
+
 beta_settings:
     cloud_sql_instances: app-backend-service:europe-west1:data-instance
 
