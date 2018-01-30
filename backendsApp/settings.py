@@ -20,8 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&)!4m=%fa#v6o0w7u5*quyym$-z+3t+rk12jdc-*)i%!v7mb45'
 
+if os.getenv('GAE_INSTANCE'):
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+    SECRET_KEY = '&)!4m=%ba#v6o0w7u5*quyym$-z+7t+rk12jdc-*+i%!v7mb45'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'core',
     'project',
 ]
 
@@ -64,6 +68,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backendsApp.urls'
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 TEMPLATES = [
     {
