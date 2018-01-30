@@ -5,10 +5,11 @@ entrypoint: gunicorn -b :$PORT backendsApp.wsgi
 
 
 env_variables :
-   DB_NAME : 'dev-data'
-   DB_USERNAME : 'dca'
-   DB_PASSWORD : '12345678'
-   DB_HOST : '/cloudsql/app-backend-service:europe-west1:data-instance'
+   DB_NAME: 'dev-data'
+   DB_USERNAME: 'dca'
+   DB_PASSWORD: '12345678'
+   DB_HOST: '/cloudsql/app-backend-service:europe-west1:data-instance'
+   SECRET_KEY: '&)!4m=%fa#v6o0w7u5*quyym$-z+3t+rk12jdc-*)i%!v7mb45'
 
 beta_settings:
     cloud_sql_instances: app-backend-service:europe-west1:data-instance
