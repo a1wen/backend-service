@@ -15,6 +15,7 @@ LEVEL_CHOICES = (
 )
 
 class Project(AbstractModel):
+    # id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=250)
     date = models.DateTimeField(default=timezone.now)
     levelOfTraining = models.CharField(max_length=20, choices=LEVEL_CHOICES, default="medium")
