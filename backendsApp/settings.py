@@ -108,9 +108,9 @@ DATABASES = {
         # If you are using Cloud SQL for MySQL rather than PostgreSQL, set
         # 'ENGINE': 'django.db.backends.mysql' instead of the following.
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'DEVELOP',
-        'USER': 'dca',
-        'PASSWORD': '12345678',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USERNAME'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
         # For MySQL, set 'PORT': '3306' instead of the following. Any Cloud
         # SQL Proxy instances running locally must also be set to tcp:3306.
         'PORT': '5432',
@@ -120,9 +120,10 @@ DATABASES = {
 # In the flexible environment, you connect to CloudSQL using a unix socket.
 # Locally, you can use the CloudSQL proxy to proxy a localhost connection
 # to the instance
-DATABASES['default']['HOST'] = '/cloudsql/app-backend-service:europe-west1:data-instance'
+
 if os.getenv('GAE_INSTANCE'):
-    pass
+    DATABASES['default']['HOST'] = '/cloudsql/app-backend-service:europe-west1:data-instance'
+    DATABASES['default']['NAME'] = 'PRODACTION'
 else:
     DATABASES['default']['HOST'] = '127.0.0.1'
 # [END dbconfig]
